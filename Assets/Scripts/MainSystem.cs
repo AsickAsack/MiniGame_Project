@@ -28,10 +28,10 @@ public class MainSystem : MonoBehaviour
                 break;
 
 
-            GameObject obj = Instantiate(prefab,
+            GameObject obj = Instantiate(temp,
             Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0, 2), Random.Range(0, 2), 0.0f)), Quaternion.identity);
-    }
-
+        }   
+    
         
     }
     
@@ -42,7 +42,7 @@ public class MainSystem : MonoBehaviour
         if(CreateTime < 0)
         {
             int temp = Random.Range(0, 3);
-            CreateItem(Arrow);
+            CreateItem(temp);
             CreateTime = 3.0f;
         }
     }
