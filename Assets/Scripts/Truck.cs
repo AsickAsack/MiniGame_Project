@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Truck : Items
 {
-    public override void GetReward()
+    public override void GetReward(Transform tr)
     {
-        throw new System.NotImplementedException();
+        MainSystem.instance.setPoint(30);
     }
 
     

@@ -152,9 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c59f7fddbe0504bb16502daa2a5a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MetaGirl: {fileID: 1284833379}
   Arrow: {fileID: 3808075552346615685, guid: 5963659b38816ca438e1d4892f124b1f, type: 3}
-  Truck: {fileID: 0}
-  blanket: {fileID: 0}
+  Truck: {fileID: 3808075552346615685, guid: c9d7de95a856a7444b4251664644bcb6, type: 3}
+  blanket: {fileID: 3808075552346615685, guid: 523a702d72c0069498ffc0f45face0f4, type: 3}
+  poinTtx: {fileID: 234528737}
 --- !u!4 &134811376
 Transform:
   m_ObjectHideFlags: 0
@@ -269,7 +271,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -814,6 +816,7 @@ GameObject:
   - component: {fileID: 1284833378}
   - component: {fileID: 1284833381}
   - component: {fileID: 1284833380}
+  - component: {fileID: 1284833382}
   m_Layer: 0
   m_Name: MetaGirl
   m_TagString: Player
@@ -860,7 +863,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ad18bdcec56d8d74fab20665a046352f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -897,7 +900,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -934,6 +937,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1284833382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284833377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5ff54ba9b9c78449eca7262cfdc643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shield: {fileID: 1839079068}
 --- !u!1 &1839079067
 GameObject:
   m_ObjectHideFlags: 0

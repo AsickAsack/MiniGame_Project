@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Arrow : Items
 {
-    public override void GetReward()
+    public override void GetReward(Transform tr)
     {
-        throw new System.NotImplementedException();
+        if(tr.GetComponent<Player>().Shield.gameObject.activeSelf)
+            tr.GetComponent<Player>().Shield.gameObject.SetActive(false);
+        else
+            tr.gameObject.SetActive(false);
     }
 }

@@ -2,30 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ireward
-{
-    void GetReward(); 
-}
-
-
-public abstract class Items : MonoBehaviour, ireward
+public abstract class Items : MonoBehaviour
 {
     public float Speed;
     public float liveTime = 5.0f;
-    public abstract void GetReward();
+    public abstract void GetReward(Transform tr);
 
     public void Fire(Transform tr)
     {
-        StartCoroutine(GoTarget(tr));
+        StartCoroutine(GoTarget((tr.position-this.transform.position).normalized));
     }
 
-   IEnumerator GoTarget(Transform tr)
+   IEnumerator GoTarget(Vector3 dir)
     {
-        while(liveTime >= 5.0f)
+        while(liveTime > 0.0f)
         {
             liveTime -= Time.deltaTime;
 
-            this.transform.position += (tr.position-transform.position).normalized * Time.deltaTime * Speed;
+            this.transform.position += dir * Time.deltaTime * Speed;
             yield return null;
         }
 
@@ -33,5 +27,14 @@ public abstract class Items : MonoBehaviour, ireward
         
     }
 
-   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            GetReward(collision.transform);
+            Destroy(this.gameObject);
+        }
+    }
+
+
 }

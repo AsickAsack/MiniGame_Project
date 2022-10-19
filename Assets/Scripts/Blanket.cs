@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Blanket : Items
 {
-    public override void GetReward()
+    public override void GetReward(Transform tr)
     {
-        throw new System.NotImplementedException();
+        tr.GetComponent<Player>().Shield.gameObject.SetActive(true);
     }
 }
