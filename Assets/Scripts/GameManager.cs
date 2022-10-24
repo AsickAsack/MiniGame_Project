@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public MiniGame[] MiniGames;
     public int Atem = 0;
     public int Point = 0;
-    public int Game_time = 0;
+    public float Game_time = 0;
 
     //아템 표시할 텍스트
     public TMPro.TMP_Text Atem_Tx;

@@ -8,7 +8,6 @@ public class MetaGirlSystem : MiniGame
     public Player MetaGirl;
     public Transform MetaGirl_Canvas;
 
-    private Coroutine RoutineCo;
     public GameObject[] item_Prefabs;
     private List<GameObject> items = new List<GameObject>();
 
@@ -21,14 +20,7 @@ public class MetaGirlSystem : MiniGame
         { 
             MetaGirl.SetMoveMent(true);
             SetPoint();
-
-            if(RoutineCo == null)
-            RoutineCo = StartCoroutine("GameRoutine");
-            else
-            {
-                StopCoroutine(RoutineCo);
-                RoutineCo = StartCoroutine("GameRoutine");
-            }
+            StartGameRoutine();
         }
     }
 
