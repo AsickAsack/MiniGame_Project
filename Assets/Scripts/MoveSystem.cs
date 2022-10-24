@@ -5,29 +5,26 @@ using UnityEngine.EventSystems;
 
 public class MoveSystem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    public GameObject MetaGirl;
     public Transform JoySticBase;
     public Transform JoyStic;
+
     public float Speed = 5.0f;
     private float JoysticSize;
-    private Vector3 StartPos;
-    private Vector3 CurPos;
+
+    private Vector2 StartPos;
+    private Vector2 CurPos;
     private Vector2 TempPos;
+
     bool IsClick = false;
 
    void Awake()
     {
         JoysticSize = JoySticBase.GetComponent<RectTransform>().sizeDelta.x * 0.25f;
+
+        
     }
 
-    void Update()
-    {
-        if (IsClick)
-        {
-            MetaGirl.transform.position += (CurPos - StartPos).normalized * Time.deltaTime * Speed;
-        }
-    }
-
+    
     //드래그 중일때
     public void OnDrag(PointerEventData eventData)
     {
@@ -41,19 +38,30 @@ public class MoveSystem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
     //터치 했을때
     public void OnPointerDown(PointerEventData eventData)
     {
-        ChangeState();
+        ChangeState(true);
         StartPos = JoySticBase.position = eventData.position;
     }
 
     //터치 뗐을때
-    public void OnPointerUp(PointerEventData eventData) => ChangeState();
+    public void OnPointerUp(PointerEventData eventData) => ChangeState(false);
 
     //조이스틱 on/off, 클릭 상태 변경
-    public void ChangeState()
+    public void ChangeState(bool check)
     {
-        IsClick = !IsClick;
-        JoySticBase.gameObject.SetActive(IsClick);
+        IsClick = check;
+        JoySticBase.gameObject.SetActive(check);
     }
+
+    public bool GetState()
+    {
+        return IsClick;
+    }
+
+    public Vector2 GetDir()
+    {
+        return (CurPos - StartPos).normalized;
+    }
+
 
 
 

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Truck : Items
 {
+    public int Point;
+
     public override void GetReward(Transform tr)
     {
-        MainSystem.instance.setPoint(30);
+        GameManager.instance.MiniGames[0].SetPoint(Point);
     }
 
-    
 }

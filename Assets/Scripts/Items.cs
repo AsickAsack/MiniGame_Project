@@ -5,25 +5,27 @@ using UnityEngine;
 public abstract class Items : MonoBehaviour
 {
     public float Speed;
+    public float RDRange; // ·£´ý ·¹ÀÎÁö
     public float liveTime = 5.0f;
     public abstract void GetReward(Transform tr);
 
     public void Fire(Transform tr)
     {
-        StartCoroutine(GoTarget((tr.position-this.transform.position).normalized));
+        
+        StartCoroutine(GoTarget((Vector2)(tr.position-this.transform.position).normalized));
     }
 
-   IEnumerator GoTarget(Vector3 dir)
+   IEnumerator GoTarget(Vector2 dir)
     {
         while(liveTime > 0.0f)
         {
             liveTime -= Time.deltaTime;
 
-            this.transform.position += dir * Time.deltaTime * Speed;
+            this.transform.Translate(dir * Time.deltaTime * Random.Range(Speed - RDRange, Speed + RDRange+1));
             yield return null;
         }
 
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
         
     }
 
@@ -31,8 +33,8 @@ public abstract class Items : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GetReward(collision.transform);
-            Destroy(this.gameObject);
+            GetReward(collision.transform.parent);
+            this.gameObject.SetActive(false);
         }
     }
 
